@@ -6,7 +6,7 @@
 echo -e "\e[43m\n"
 echo "####### Welcome to the Holiday APP Installation #######"
 tput sgr0 #Reset text attributes to normal without clear.
-echo "\n"
+echo -e "\n"
 read -p "Are you ready to start the installation ? (yes/no)?" choice
 
 case "$choice" in
