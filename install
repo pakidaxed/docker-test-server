@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Installing PhoneBook APP
+echo "\e[42m\n"
+echo "####### Welcome to the Holiday APP Installation #######\r"
+tput sgr0 #Reset text attributes to normal without clear.
+echo "\r"
+read -p "Are you ready to start the installation ? (yes/no)?" choice
+
+case "$choice" in
+y | Y | yes)
+  echo ""
+  echo "\e[5mClosing Docker if any exists..."
+  tput sgr0 #Reset text attributes to normal without clear.
+  docker-compose down
+  echo "\e[5mStarting Docker..."
+  tput sgr0 #Reset text attributes to normal without clear.
+  docker-compose up -d --build
+  echo "\e[5mWaiting some time for database to create..."
+  tput sgr0 #Reset text attributes to normal without clear.
+  sleep 15 # set to 20-30 dont forget to mysql db to create files
+  echo "\e[32mDONE\r"
+  tput sgr0 #Reset text attributes to normal without clear.
+  echo "\e[5mUpdating composer and downloading all vendors..."
+  tput sgr0 #Reset text attributes to normal without clear.
+  docker exec -it php74 composer update
+  sleep 1
+  docker exec -it php74 php bin/console cache:clear
+  sleep 1
+  echo "\e[5mCreating main database if doesnt exists..."
+  tput sgr0 #Reset text attributes to normal without clear.
+  docker exec -it php74 php bin/console doctrine:database:create
+  sleep 2
+  echo "\r"
+  echo "\e[5mLast step! Making migrations. Please confirm..."
+  tput sgr0 #Reset text attributes to normal without clear.
+  docker exec -it php74 php bin/console doctrine:migrations:migrate
+  sleep 1
+  docker exec -it php74 php bin/console doctrine:fixtures:load
+  sleep 2
+  echo "\e[32mHoliday APP successfully installed\r"
+  sleep 1
+  echo "Please remove the install file after installation, you wont need it anymore\r"
+  sleep 1
+  echo "Open your browser and enter your localhost address ex.: 127.0.0.1 or localhost\r"
+  sleep 1
+  echo "ENJOY ! © Tomas Jucius (jucius.tomas@gmail.com) 2020\r"
+  ;;
+n | N | no)
+  exit
+  return 1
+  echo "\e[31mInstalltion was canceled.\r"
+  ;;
+*)
+  exit
+  return 1
+  echo "\e[31mInvalid answer. YES (yes/y/Y) or NO (no/n/N) only\r"
+  ;;
+esac
