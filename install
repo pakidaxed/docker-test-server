@@ -4,56 +4,56 @@
 # shellcheck disable=SC2039
 
 echo -e "\e[43m\n"
-echo "####### Welcome to the Holiday APP Installation #######\r"
+echo "####### Welcome to the Holiday APP Installation #######"
 tput sgr0 #Reset text attributes to normal without clear.
-echo "\r"
+echo "\n"
 read -p "Are you ready to start the installation ? (yes/no)?" choice
 
 case "$choice" in
 y | Y | yes)
-  echo ""
+  echo -e "\n"
   echo -e "\e[33mClosing Docker if any exists..."
   tput sgr0 #Reset text attributes to normal without clear.
   docker-compose down
   echo "\e[33mStarting Docker..."
   tput sgr0 #Reset text attributes to normal without clear.
   docker-compose up -d --build
-  echo "\e[33mWaiting some time for database to create..."
+  echo -e "\e[33mWaiting some time for database to create..."
   tput sgr0 #Reset text attributes to normal without clear.
   sleep 11 # set to 20-30 dont forget to mysql db to create files
-  echo "\e[32mDONE\r"
+  echo -e "\e[32mDONE\r"
   tput sgr0 #Reset text attributes to normal without clear.
-  echo "\e[33mUpdating composer and downloading all vendors..."
+  echo -e "\e[33mUpdating composer and downloading all vendors..."
   tput sgr0 #Reset text attributes to normal without clear.
   docker exec -it php74 composer update
   sleep 1
   docker exec -it php74 php bin/console cache:clear
   sleep 1
-  echo "\e[33mCreating main database if doesnt exists..."
+  echo -e "\e[33mCreating main database if doesnt exists..."
   tput sgr0 #Reset text attributes to normal without clear.
   docker exec -it php74 php bin/console doctrine:database:create
   sleep 2
-  echo "\r"
-  echo "\e[33mLast step! Making migrations. Please confirm..."
+  echo "\n"
+  echo -e "\e[33mLast step! Making migrations. Please confirm..."
   tput sgr0 #Reset text attributes to normal without clear.
   docker exec -it php74 php bin/console doctrine:migrations:migrate
   sleep 1
   echo  -e "\e[33mHoliday APP successfully installed\r"
   sleep 1
-  echo  "Please remove the install file after installation, you wont need it anymore\r"
+  echo  -e "Please remove the install file after installation, you wont need it anymore\r"
   sleep 1
-  echo "Open your browser and enter your localhost address ex.: 127.0.0.1 or localhost\r"
+  echo -e "Open your browser and enter your localhost address ex.: 127.0.0.1 or localhost\r"
   sleep 1
-  echo "ENJOY ! © Tomas Jucius (jucius.tomas@gmail.com) 2020\r"
+  echo -e "ENJOY ! © Tomas Jucius (jucius.tomas@gmail.com) 2020\r"
   ;;
 n | N | no)
   exit
   return 1
-  echo "\e[31mInstalltion was canceled.\r"
+  echo -e "\e[31mInstalltion was canceled.\r"
   ;;
 *)
   exit
   return 1
-  echo "\e[31mInvalid answer. YES (yes/y/Y) or NO (no/n/N) only\r"
+  echo -e "\e[31mInvalid answer. YES (yes/y/Y) or NO (no/n/N) only\r"
   ;;
 esac
