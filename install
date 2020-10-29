@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Installing PhoneBook APP
+# Installing Holiday APP
 echo "\e[42m\n"
 echo "####### Welcome to the Holiday APP Installation #######\r"
 tput sgr0 #Reset text attributes to normal without clear.
