@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Installing Holiday APP
-echo "\e[43m\n"
+# shellcheck disable=SC2039
+
+echo -e "\e[43m\n"
 echo "####### Welcome to the Holiday APP Installation #######\r"
 tput sgr0 #Reset text attributes to normal without clear.
 echo "\r"
@@ -10,7 +12,7 @@ read -p "Are you ready to start the installation ? (yes/no)?" choice
 case "$choice" in
 y | Y | yes)
   echo ""
-  echo "\e[33mClosing Docker if any exists..."
+  echo -e "\e[33mClosing Docker if any exists..."
   tput sgr0 #Reset text attributes to normal without clear.
   docker-compose down
   echo "\e[33mStarting Docker..."
@@ -36,9 +38,9 @@ y | Y | yes)
   tput sgr0 #Reset text attributes to normal without clear.
   docker exec -it php74 php bin/console doctrine:migrations:migrate
   sleep 1
-  echo "\e[33mHoliday APP successfully installed\r"
+  echo  -e "\e[33mHoliday APP successfully installed\r"
   sleep 1
-  echo "Please remove the install file after installation, you wont need it anymore\r"
+  echo  "Please remove the install file after installation, you wont need it anymore\r"
   sleep 1
   echo "Open your browser and enter your localhost address ex.: 127.0.0.1 or localhost\r"
   sleep 1
