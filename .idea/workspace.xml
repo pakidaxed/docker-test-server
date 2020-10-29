@@ -20,8 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c5e9f02-669c-45af-afa9-ac7672ce8fc1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/HolidaysController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/SearchType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/YearSorting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/holidays/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lauzynas.lt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lauzynas.lt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +110,16 @@
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jWicF2C5Z0nZUjsUd7yjrR9ANs" />
@@ -127,7 +148,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603926326183</updated>
       <workItem from="1603926327303" duration="2864000" />
-      <workItem from="1603969451968" duration="60000" />
+      <workItem from="1603969451968" duration="1573000" />
     </task>
     <servers />
   </component>
@@ -147,9 +168,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="698" y="273" width="585" height="568" key="NewPhpClassDialog" timestamp="1603928070972">
+    <state x="698" y="273" width="585" height="568" key="NewPhpClassDialog" timestamp="1603970492602">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="698" y="273" width="585" height="568" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603928070972" />
+    <state x="698" y="273" width="585" height="568" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603970492602" />
   </component>
 </project>
