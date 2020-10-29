@@ -27,7 +27,8 @@ class SearchType extends AbstractType
                     'Mexico' => 'mex',
                     'Poland' => 'pol',
                     'Sweden' => 'swe'
-                ]
+                ],
+                'label' => 'Please select the Country'
             ])
             // You can also add how many years you want
             ->add('year', ChoiceType::class, [
@@ -43,8 +44,9 @@ class SearchType extends AbstractType
                     '2028' => 2028,
                     '2029' => 2029,
                     '2030' => 2030,
-                ]
+                ],
+                'label' => 'Choose the year you want to search'
             ])
-            ->add('search', SubmitType::class);
+            ->add('search', SubmitType::class, ['attr' => ['class' => 'my-btn w-100']]);
     }
 }

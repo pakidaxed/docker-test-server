@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1 class="header">SEARCH FOR HOLIDAYS</h1>
     <div class="container-fluid">
-        <h1>SEARCH FOR HOLIDAYS</h1>
-        {{ form_start(form) }}
-        {{ form_end(form) }}
+        <div class="search-box">
+            {{ form_start(form) }}
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
