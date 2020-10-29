@@ -11,6 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
+     * Main controller only to show the index page
+     *
      * @Route("/", name="app_index")
      * @return Response
      */
@@ -18,5 +20,4 @@ class DefaultController extends AbstractController
     {
         return $this->render('base.html.twig', []);
     }
-
 }
