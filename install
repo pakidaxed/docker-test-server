@@ -1,59 +1,66 @@
 #!/bin/sh
 
 # Installing Holiday APP
-# shellcheck disable=SC2039
 
-echo -e "\e[43m\n"
-echo "####### Welcome to the Holiday APP Installation #######"
-tput sgr0 #Reset text attributes to normal without clear.
-echo -e "\n"
+# ----------------------------------
+# Colors
+# ----------------------------------
+# shellcheck disable=SC2034
+NOCOLOR='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+
+
+
+
+
+
+printf "\n"
+# shellcheck disable=SC2059
+printf "${ORANGE}####### Welcome to the Holiday APP Installation #######\n"
+printf "\n${NOCOLOR}"
+
 read -p "Are you ready to start the installation ? (yes/no)?" choice
 
 case "$choice" in
 y | Y | yes)
-  echo -e "\n"
-  echo -e "\e[33mClosing Docker if any exists..."
-  tput sgr0 #Reset text attributes to normal without clear.
+  printf "\n"
+  printf "${ORANGE}Closing Docker if any exists...${NOCOLOR}\n"
   docker-compose down
-  echo "\e[33mStarting Docker..."
-  tput sgr0 #Reset text attributes to normal without clear.
+  printf "${ORANGE}Starting Docker...${NOCOLOR}\n"
   docker-compose up -d --build
-  echo -e "\e[33mWaiting some time for database to create..."
-  tput sgr0 #Reset text attributes to normal without clear.
+  printf "${ORANGE}Waiting some time for database to create...${NOCOLOR}\n"
   sleep 11 # set to 20-30 dont forget to mysql db to create files
-  echo -e "\e[32mDONE\r"
-  tput sgr0 #Reset text attributes to normal without clear.
-  echo -e "\e[33mUpdating composer and downloading all vendors..."
-  tput sgr0 #Reset text attributes to normal without clear.
+  printf "${GREEN}DONE${NOCOLOR}\n"
+  printf "${ORANGE}Updating composer and downloading all vendors...${NOCOLOR}\n"
   docker exec -it php74 composer update
   sleep 1
   docker exec -it php74 php bin/console cache:clear
   sleep 1
-  echo -e "\e[33mCreating main database if doesnt exists..."
-  tput sgr0 #Reset text attributes to normal without clear.
+  printf "${ORANGE}Creating main database if doesnt exists...${NOCOLOR}\n"
   docker exec -it php74 php bin/console doctrine:database:create
   sleep 2
-  echo "\n"
-  echo -e "\e[33mLast step! Making migrations. Please confirm..."
-  tput sgr0 #Reset text attributes to normal without clear.
+  printf "\n"
+  printf "${ORANGE}Last step! Making migrations. Please confirm...${NOCOLOR}\n"
   docker exec -it php74 php bin/console doctrine:migrations:migrate
   sleep 1
-  echo  -e "\e[33mHoliday APP successfully installed\r"
+  printf "${GREEN}Holiday APP successfully installed\n"
   sleep 1
-  echo  -e "Please remove the install file after installation, you wont need it anymore\r"
+  printf "Please remove the install file after installation, you wont need it anymore\n"
   sleep 1
-  echo -e "Open your browser and enter your localhost address ex.: 127.0.0.1 or localhost\r"
+  printf "Open your browser and enter your localhost address ex.: 127.0.0.1 or localhost\n"
   sleep 1
-  echo -e "ENJOY ! © Tomas Jucius (jucius.tomas@gmail.com) 2020\r"
+  printf "ENJOY ! © Tomas Jucius (jucius.tomas@gmail.com) 2020${NOCOLOR}\n"
   ;;
 n | N | no)
   exit
   return 1
-  echo -e "\e[31mInstalltion was canceled.\r"
+  printf "${RED}Installtion was canceled.${NOCOLOR}\n"
   ;;
 *)
   exit
   return 1
-  echo -e "\e[31mInvalid answer. YES (yes/y/Y) or NO (no/n/N) only\r"
+  printf "${RED}Invalid answer. YES (yes/y/Y) or NO (no/n/N) only${NOCOLOR}\n"
   ;;
 esac
