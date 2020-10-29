@@ -45,8 +45,17 @@ label {
     object-fit: scale-down;
 }
 
-.month-box {
-    border: 1px solid red;
-    margin: 1px;
+.info-box {
     padding: 10px;
+}
+
+.month-box {
+    border: 1px solid orange;
+    border-left-width: 6px;
+    margin: 5px 0;
+    padding: 10px;
+}
+
+.font-big {
+    font-size: 20px;
 }

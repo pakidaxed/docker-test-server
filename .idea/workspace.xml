@@ -20,10 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c5e9f02-669c-45af-afa9-ac7672ce8fc1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Twig/AppExtension.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/holidays/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Twig/AppExtensionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lauzynas.lt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lauzynas.lt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/SearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SearchType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sfdoc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HolidaysController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HolidaysController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/holidays/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/holidays/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +122,10 @@
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jWicF2C5Z0nZUjsUd7yjrR9ANs" />
@@ -139,7 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603926326183</updated>
       <workItem from="1603926327303" duration="2864000" />
-      <workItem from="1603969451968" duration="2976000" />
+      <workItem from="1603969451968" duration="12905000" />
     </task>
     <servers />
   </component>
@@ -159,9 +174,13 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="698" y="273" width="585" height="568" key="NewPhpClassDialog" timestamp="1603970492602">
+    <state x="666" y="287" width="640" height="547" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603978036126">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="698" y="273" width="585" height="568" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603970492602" />
+    <state x="666" y="287" width="640" height="547" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603978036126" />
+    <state x="698" y="273" width="601" height="575" key="NewPhpClassDialog" timestamp="1603982092456">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="698" y="273" width="601" height="575" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1603982092456" />
   </component>
 </project>

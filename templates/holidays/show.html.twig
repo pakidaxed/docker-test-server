@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">RESULTS</h1>
+    <div class="container-fluid">
+        <div class="info-box d-flex justify-center align-between">
+            <div class="block-a w-100">
+                <h2>Total holidays: {{ holidays_total }}</h2>
+                <h2>Total free days in a row: {{ total_free_days }}</h2>
+            </div>
+            <div class="bock-b w-100 text-right">
+                <h2>{{ today_status }}</h2>
+                <h2>Showing data from <span class="text-danger">{{ source }}</span></h2>
+            </div>
+        </div>
+        {% for key, month in content %}
+            <div class="month-box">
+                <h4 class="mb-3">{{ toMonth(key) }}</h4>
+                {% for day in month %}
+                    <p class="p-0 m-0">{{ toMonth(day.date.month) }} {{ (day.date.day) }}</p>
+                    <p class="p-0 mb-0 font-weight-bold font-big">{{ day.name.1.text }}</p>
+                    <p class="p-0 mb-3 font-italic">{{ day.name.0.text }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

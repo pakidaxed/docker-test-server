@@ -31,6 +31,9 @@ class HolidaysController extends AbstractController
     }
 
     /**
+     * Creating the main search form to choose the country
+     * and sending the choices to results page
+     *
      * @Route("/holidays", name="app_holidays")
      * @return Response
      */
@@ -51,6 +54,12 @@ class HolidaysController extends AbstractController
     }
 
     /**
+     * Getting data from inputs, connecting to DB to check for existing data
+     * If there is no data, connect to API and get from there
+     * After getting info from API, saving it to our DB for faster results next time
+     * Also saving to data the maximum number of free days in a row, for faster rendering too
+     * Because all connections to API icreasing the render time
+     *
      * @Route("/holidays/show/", name="app_holidays_show")
      * @param Request $request
      * @param YearSorting $sorting
@@ -59,14 +68,16 @@ class HolidaysController extends AbstractController
      */
     public function showHolidays(Request $request, YearSorting $sorting, EntityManagerInterface $entity): Response
     {
+        // Taking data from input
         $data = $request->get('data');
         $this->country = $data['country'];
         $this->year = $data['year'];
 
+        // Choosing what to do, DB or API
         $repo = $entity->getRepository(Holidays::class);
         $db_data = $repo->findOneBy(['country' => $this->country, 'year' => $this->year]);
         if ($db_data) {
-            $this->source = 'Database';
+            $this->source = 'database';
             $this->content = $db_data->getData();
             $this->total_free_days = $db_data->getFree();
         } else {
@@ -84,6 +95,7 @@ class HolidaysController extends AbstractController
                 ]
             );
 
+            // Saving to our DB  if everything is ok, and we dont have it in our DB
             if ($response->getStatusCode() === 200
                 && $response->getHeaders()['content-type'][0] === 'application/json') {
 
@@ -102,6 +114,7 @@ class HolidaysController extends AbstractController
             }
         }
 
+        // Setting some variables just for cleaner code
         $holidays_total = count($this->content);
         $sorted_data = $sorting->sortingToMonths($this->content);
         $today_status = $this->getStatusToday($data['country']);
@@ -116,9 +129,17 @@ class HolidaysController extends AbstractController
         );
     }
 
-    //statusas irgi ryja milisekundes
+    /**
+     * Getting status of current day, also requesting API (slows the render)
+     * Maybe it could be set to the user cookie or server session, also to increase render time
+     * Not to request every time, loading the results
+     *
+     * @param $country
+     * @return string
+     */
     public function getStatusToday($country)
     {
+        // Checking today for public holiday ?
         $response = $this->client->request(
             'GET',
             'https://kayaposoft.com/enrico/json/v2.0/', [
@@ -131,6 +152,7 @@ class HolidaysController extends AbstractController
         $response->getContent();
         $public_holiday = $response->toArray();
 
+        // Checking today for workday
         $response2 = $this->client->request(
             'GET',
             'https://kayaposoft.com/enrico/json/v2.0/', [
@@ -143,6 +165,7 @@ class HolidaysController extends AbstractController
         $response2->getContent();
         $workday = $response2->toArray();
 
+        // Setting the status of current day and returning it
         if ($public_holiday['isPublicHoliday']) {
 
             $status = 'Public Holiday';
@@ -160,7 +183,15 @@ class HolidaysController extends AbstractController
         return 'Today is ' . $status;
     }
 
-    // cia aprasyti komentara kad buvau padares kas karta is db ziuret, kad taupyt load time perkeliau i db total iseigines
+    /**
+     * Counting total free days in a row
+     * Counting each public holiday before and after for free days or other holidays
+     * until gets the workday
+     * I decided to put it to the database too because it's the main load time consumer
+     *
+     * @param $content
+     * @return mixed
+     */
     public function totalFreeDays($content)
     {
         $array = [];
@@ -168,6 +199,7 @@ class HolidaysController extends AbstractController
             $month = $public_holidays['date']['month'];
             $day = $public_holidays['date']['day'];
 
+            // Checking for all free days before the given date
             $date = new DateTime($this->year . '-' . $month . '-' . $day);
             $temp_before = 0;
             $workday = false;
@@ -190,6 +222,7 @@ class HolidaysController extends AbstractController
                 $temp_before++;
             }
 
+            // Checking for all free days after the given date
             $date = new DateTime($this->year . '-' . $month . '-' . $day);
             $temp_after = 0;
             $workday = false;
@@ -212,9 +245,9 @@ class HolidaysController extends AbstractController
                 $temp_after++;
             }
 
-            $array[] = $temp_before + 1 + $temp_after;
+            $total_in_a_row[] = $temp_before + 1 + $temp_after;
         }
 
-        return max($array);
+        return max($total_in_a_row);
     }
 }

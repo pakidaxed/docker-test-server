@@ -17,12 +17,15 @@
         "symfony/form": "5.1.*",
         "symfony/framework-bundle": "5.1.*",
         "symfony/http-client": "5.1.*",
+        "symfony/phpunit-bridge": "^5.1",
         "symfony/twig-bundle": "5.1.*",
         "symfony/yaml": "5.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "symfony/browser-kit": "5.1.*",
+        "symfony/css-selector": "5.1.*",
         "symfony/maker-bundle": "^1.23",
         "symfony/stopwatch": "^5.1",
         "symfony/web-profiler-bundle": "^5.1"
